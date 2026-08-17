@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fashion & Accessories Catalog</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body class="bg-light">
 
-  <!-- Navbar -->
+ 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold fs-4" href="#">
         <i class="bi bi-bag-heart-fill text-danger me-2"></i>STYLE STORE
       </a>
       
-      <!-- Cart Button for Mobile -->
+      
       <button class="btn btn-outline-light position-relative d-lg-none me-auto ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
         <i class="bi bi-cart3"></i>
         <span id="cartBadgeMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
@@ -28,104 +28,99 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Search Bar -->
+    
         <div class="d-flex mx-auto my-2 my-lg-0 w-100 max-w-500">
           <div class="input-group">
-            <input type="text" id="searchInput" class="form-control" placeholder="ابحث عن منتج بالاسم...">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search for product name ">
             <button class="btn btn-primary" type="button" id="searchBtn">
               <i class="bi bi-search"></i>
             </button>
           </div>
         </div>
 
-        <!-- Cart Button for Desktop -->
+      
         <button class="btn btn-outline-light position-relative ms-3 d-none d-lg-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
-          <i class="bi bi-cart3 me-1"></i> السلة
+           Cart <i class="bi bi-cart3 me-1"></i>
           <span id="cartBadgeDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
+
   <main class="container my-4">
-    <!-- Controls Section: Filtering & Sorting -->
+   
     <section class="row g-3 mb-4 align-items-center bg-white p-3 rounded shadow-sm mx-0">
       <div class="col-md-6">
-        <label for="categoryFilter" class="form-label fw-bold mb-1">الفئة:</label>
+        <label for="categoryFilter" class="form-label fw-bold mb-1">Category : </label>
         <select id="categoryFilter" class="form-select">
-          <option value="all">جميع الفئات</option>
-          <!-- Categories will be rendered dynamically -->
+          <option value="all">All Categories </option>
+       
         </select>
       </div>
       <div class="col-md-6">
-        <label for="sortSelect" class="form-label fw-bold mb-1">ترتيب حسب السعر:</label>
+        <label for="sortSelect" class="form-label fw-bold mb-1">Sort By Price</label>
         <select id="sortSelect" class="form-select">
-          <option value="default">الافتراضي</option>
-          <option value="low-high">السعر: من الأقل للأعلى</option>
-          <option value="high-low">السعر: من الأعلى للأقل</option>
+          <option value="default">Default</option>
+          <option value="low-high">Price : low to high</option>
+          <option value="high-low">Price : high to low</option>
         </select>
       </div>
     </section>
 
-    <!-- Dynamic States -->
-    <!-- 1. Loading State -->
+  
+
     <div id="loadingSpinner" class="text-center my-5 d-none">
       <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-        <span class="visually-hidden">جاري التحميل...</span>
+        <span class="visually-hidden">Loading ...</span>
       </div>
-      <p class="mt-2 text-muted fw-bold">جاري تحميل المنتجات...</p>
+      <p class="mt-2 text-muted fw-bold">Loading Products ...</p>
     </div>
 
-    <!-- 2. Error State -->
+   
     <div id="errorMessage" class="alert alert-danger text-center d-none my-4" role="alert">
-      حدث خطأ أثناء جلب البيانات. يرجى المحاولة لاحقاً!
+    Somthing Went Wrong , Try Again Later ...
     </div>
 
-    <!-- 3. Products Grid Grid -->
+   
     <section class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="productsContainer">
-      <!-- Products Cards will be rendered dynamically via JavaScript -->
     </section>
   </main>
 
-  <!-- Shopping Cart Offcanvas Sidebar -->
+
   <div class="offcanvas offcanvas-start" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
     <div class="offcanvas-header bg-dark text-white">
       <h5 class="offcanvas-title" id="cartOffcanvasLabel">
-        <i class="bi bi-bag-check me-2"></i>سلة التسوق
+        <i class="bi bi-bag-check me-2"></i>Shopping Cart
       </h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <!-- Cart Items Container -->
+     
       <div id="cartItemsContainer" class="flex-grow-1 overflow-auto">
-        <!-- Cart items will be rendered dynamically -->
       </div>
 
-      <!-- Cart Total & Actions -->
+     
       <div class="border-top pt-3 mt-auto">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <span class="fs-5 fw-bold">المجموع الكلي:</span>
+          <span class="fs-5 fw-bold">Total Cost : </span>
           <span id="cartTotal" class="fs-4 fw-bold text-success">$0.00</span>
         </div>
-        <button id="clearCartBtn" class="btn btn-outline-danger w-100 mb-2">إفرغ السلة</button>
+        <button id="clearCartBtn" class="btn btn-outline-danger w-100 mb-2">Clear All</button>
       </div>
     </div>
   </div>
 
-  <!-- Product Details Modal -->
+
   <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content" id="modalContent">
-        <!-- Product details will be rendered dynamically -->
       </div>
     </div>
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>  
   <script src="./assets/js/api.js"></script>  
   <script src="./assets/js/ui.js"></script> 
    <script src="./assets/js/cart.js"></script>
