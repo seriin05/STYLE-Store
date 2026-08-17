@@ -1,4 +1,4 @@
-// Base URL for DummyJSON API
+
 const BASE_URL = 'https://dummyjson.com/products';
 const EXTENDED_CATEGORIES = [
   'mens-watches',
